@@ -1,0 +1,114 @@
+@media screen and (max-width: 480px) {
+    .footer_tab {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .footer_tab li a{
+        display: block;
+        background:#ddd;
+        margin:0 2px;
+        padding:8px 24px;
+        text-align: center;
+        color: var(--green90);
+    }
+    /*liにactiveクラスがついた時の形状*/
+    .footer_tab li.active a{
+        background:#fff;
+        border-bottom: 5px solid var(--green60);
+    }
+    .scr_iso_list {
+        display: none;
+        opacity: 0;
+        margin: 48px 8px 56px 8px;
+    }
+    .scr_iso_center.first {
+        display: block;
+        animation-name: displayAnime_F;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes displayAnime_F{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    .scr_iso_center.is-active {
+        display: block;
+        animation-name: displayAnime_L;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes displayAnime_L{
+        from {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .scr_iso_right.is-active {
+        display: block;
+        animation-name: displayAnime_R;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes displayAnime_R{
+        from {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .scr_iso_center {
+        width: 100%; 
+    }
+    .scr_iso_right {
+        width: 100%; 
+    }
+    #footer_area {
+        position: fixed;
+        width: 100%;
+        bottom: 0px;
+        font-family: 'M PLUS 1p', sans-serif;
+        font-size: 0;
+        opacity: 0.9;
+        z-index: 99;
+    }
+    #footer_area ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 48px;
+        justify-content: center;
+        align-items: flex-start;
+        flex-shrink: 0;
+        background: var(--sky-white, #FFF);
+    }
+    #footer_area li {
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        margin: 0;
+        font-family: 'M PLUS 1p', sans-serif;
+        font-size: 1rem;
+        border-right: 1px solid #FFF;
+    }
+
+    /*
+        計算結果エリア　スマホ対応
+    */
+    .scr_iso_right th,
+    .scr_iso_right td {
+        font-size: 0.7rem;
+    }
+}

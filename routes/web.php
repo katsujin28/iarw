@@ -13,11 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/', [
+    'uses' => 'App\Http\Controllers\CalculationController@index',
+    'as' => 'index'
+]);
+Route::post('/', [
+    'uses' => 'App\Http\Controllers\CalculationController@update',
+    'as' => 'update'
+]);
 
 
 Route::get('/calculation', function () {
     return view('calculation/index');
 });
+

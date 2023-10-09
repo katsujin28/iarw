@@ -1,0 +1,583 @@
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance:textfield;
+}
+
+:root {
+    --border-radius-medium: 8px;
+    --bg-subtle: #F4F6F7;       /* 背景色 */
+    --bg-canvas: #FFF;          /* ブロックカラー */
+    --ink-dark: #303437;        /* フォントカラー */
+    --input-line: #ced4da;
+    --green-lightest: #ECFCE5;
+    --green-lighter: #7DDE86;
+    --green-light: #4CD471;
+    --green-base: #23C16B;
+    --green-dark: #198155;
+    --green-darkest: #0D4F2B;
+    --light: #f8f9fa;
+    --gray: #6c757d;
+    --border-muted: #DADDDE;
+    --green10: #E8FAF0;
+    --green20: #D7F5E5;
+    --green30: #9BEBBF;
+    --green40: #51C285;
+    --green50: #23A15D;
+    --green60: #008557;
+    --green70: #006341;
+    --green80: #0D4F2B;
+    --green90: #05381D;
+    --green100: #021F10;
+    --red-base: #FF5247;
+    --red-lightest: #FFE5E5;
+    --blue-base: #48A7F8;
+    --blue-lightest: #C9F0FF;
+    --primary-lightest: #E7E7FF;
+    border-top: 5px solid var(--dark);
+    font-size: 1rem;
+}
+
+/*
+    タグ
+*/
+*, ::after, ::before {
+    box-sizing: border-box;
+} 
+body {
+    font-family: 'M PLUS 1p', sans-serif;
+    line-height: 1.5em; /* This causes wrapping h1's to collapse too small */
+    background: var(--bg-subtle);
+    color: var(--ink-dark);
+    margin: 0;
+}
+header {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px 24px;
+    background: var(--bg-canvas);
+    box-sizing: border-box;
+}
+table {
+    border-collapse: collapse;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    /* border-color: transparent; */
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    /* border-color: inherit; */
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    /* border-color: inherit; */
+}
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+th {
+    font-size: 0.8rem;
+    color: var(--green-darkest);
+}
+label {
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 1rem;
+}
+input[type="number"] {
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 1rem;
+    color: var(--ink-dark);
+    background-color: var(--bg-canvas);
+    border: 1px solid var(--input-line);
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    vertical-align: middle;
+    width: 100%;
+    height: calc(1.75rem + 2px);
+    display: inline-block;
+    padding: 0 0 0 5px;
+    user-select: none;
+}
+input[type="checkbox"] {
+    opacity:0;
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+}
+input[type="checkbox"] + span::before {
+    display: inline-block;
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--input-line);
+    border-radius: 4px;
+    margin-right: .5rem;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+input[type="checkbox"]:checked + span::before {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='15' height='15' rx='3.5' fill='%2323C16B'/%3E%3Cpath d='M11.3337 5.5L6.75033 10.0833L4.66699 8' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='0.5' y='0.5' width='15' height='15' rx='3.5' stroke='%2323C16B'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: 0px;
+} 
+input[type="radio"] {
+    opacity:0;
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+}
+input[type="radio"] + span::before {
+    display: inline-block;
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    margin-right: .5rem;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='15' height='15' rx='7.5' fill='white'/%3E%3Crect x='0.5' y='0.5' width='15' height='15' rx='7.5' stroke='%23CDCFD0'/%3E%3C/svg%3E%0A");
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+input[type="radio"]:checked + span::before {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='15' height='15' rx='7.5' fill='%2323C16B'/%3E%3Ccircle cx='7.99967' cy='7.99992' r='2.66667' fill='white'/%3E%3Crect x='0.5' y='0.5' width='15' height='15' rx='7.5' stroke='%2323C16B'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: 0px;
+} 
+button {
+    display: inline-flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 48px;
+    background: var(--bg-canvas);
+    border: 1px solid var(--green-dark);
+    color: var(--green-dark);
+    text-align: center;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+}
+h2.attack {
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 1rem;
+    font-weight: 100;
+    margin: 0 0 0 0;
+    border-bottom: solid 2px var(--green-lightest);
+    position: relative;
+}
+h2.attack:after {
+    position: absolute;
+    content: '';
+    display: block;
+    border-bottom: solid 2px var(--green-base);
+    bottom: -2px;
+    width: 20%;
+}
+h2.defense {
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 1rem;
+    font-weight: 100;
+    margin: 0 0 0 0;
+    border-bottom: solid 2px var(--green-lightest);
+    position: relative;
+}
+h2.defense:after {
+    position: absolute;
+    content: '';
+    display: block;
+    border-bottom: solid 2px var(--green-base);
+    bottom: -2px;
+    width: 20%;
+}
+h2.other {
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 1rem;
+    font-weight: 100;
+    margin: 0 0 0 0;
+    border-bottom: solid 2px var(--green-lightest);
+    position: relative;
+}
+h2.other:after {
+    position: absolute;
+    content: '';
+    display: block;
+    border-bottom: solid 2px var(--green-base);
+    bottom: -2px;
+    width: 20%;
+}
+details {
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 0.8rem;
+    margin: 0 0 16px 0;
+}
+
+
+/*
+    画面分割詳細
+*/
+.scr_iso {
+    display: flex; 
+    flex-wrap: wrap;
+}
+.scr_iso_top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%; 
+    height: 24px;
+    order: 1;
+}
+.scr_iso_left {
+    width: 30%; 
+    order: 2;
+    margin: 0 8px 24px 8px;
+}
+.scr_iso_center {
+    width: 33%; 
+    order: 3;
+    margin: 0 8px 24px 8px;
+    padding: 24px 8px 24px 8px;
+    border-radius: var(--border-radius-large, 16px);
+    background: var(--bg-canvas);
+    box-shadow: 0px 8px 16px 8px rgba(20, 20, 20, 0.04), 0px 0px 1px 0px rgba(20, 20, 20, 0.12);
+    position: relative;
+}
+.scr_iso_right {
+    width: 33%; 
+    order: 4;
+    margin: 0 8px 24px 8px;
+    padding: 24px 8px 24px 8px;
+}
+
+/*
+    実行エリア
+*/
+.exe_area {
+    width: 100%;
+    margin: 0 0 16px 0;
+    table-layout: fixed;
+}
+.exe_area tbody td:nth-of-type(2),
+.exe_area tbody td:nth-of-type(3),
+.exe_area tbody td:nth-of-type(4) {
+    width: 19%; 
+    text-align: right;
+}
+.exe_label {
+    margin-right: 8px;
+} 
+
+/*
+    入力エリア
+*/
+.input_area {
+    width: 100%;
+    margin: 0 0 16px 0;
+    table-layout: fixed;
+}
+
+/*
+    確認エリア
+*/
+.conf_area {
+    width: 100%;
+    margin: 0 0 24px 0;
+    table-layout: fixed;
+    border-radius: 16px;
+    background: var(--bg-subtle);
+    /* Shadow/Medium */
+    box-shadow: 0px 1px 8px 2px rgba(20, 20, 20, 0.08), 0px 0px 1px 0px rgba(20, 20, 20, 0.08);
+}
+.conf_area tbody td {
+    font-size: 0.8rem;
+    text-align: center;
+    background: var(--bg-canvas);
+}
+.conf_area tbody td:nth-of-type(1) {
+    border-radius: 0 0 0 16px;
+}
+.conf_area tbody td:nth-of-type(5) {
+    border-radius: 0 0 16px 0;
+}
+
+/*
+    選択エリア
+*/
+.select_header {
+    width: 100%;
+    margin: 0 0 8px 0;
+    table-layout: fixed;
+    vertical-align: center;
+}
+.select_area {
+    width: 100%;
+    margin: 0 0 16px 0;
+    table-layout: fixed;
+    vertical-align: top;
+}
+.select_label {
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 0.8rem;
+    line-height: 0;
+}
+.select_font {
+    font-size:0.5rem;
+    /* margin-left: 24px; */
+}
+
+/*
+    16ダメージエリア
+*/
+.rnd_dm_area {
+    width: 100%;
+    margin: 0 0 16px 0;
+    table-layout: fixed;
+    border-collapse: collapse; 
+    border-radius: 8px;
+    border-color: var(--bg-subtle);
+    background: var(--bg-canvas);
+    box-shadow: 0px 1px 8px 2px rgba(20, 20, 20, 0.08), 0px 0px 1px 0px rgba(20, 20, 20, 0.08);
+}
+.rnd_cl_area {
+    width: 100%;
+    margin: 0 0 0 0;
+    table-layout: fixed;
+    border-collapse: collapse; 
+    border-radius: 8px;
+    border-color: var(--bg-subtle);
+    background: var(--bg-canvas);
+    box-shadow: 0px 1px 8px 2px rgba(20, 20, 20, 0.08), 0px 0px 1px 0px rgba(20, 20, 20, 0.08);
+}
+.rnd_ko_area {
+    width: 100%;
+    margin: 0 0 16px 0;
+    border-radius: 8px;
+    border-collapse: collapse; 
+    border-color: var(--bg-subtle);
+    background: var(--bg-canvas);
+    box-shadow: 0px 1px 8px 2px rgba(20, 20, 20, 0.08), 0px 0px 1px 0px rgba(20, 20, 20, 0.08);
+}
+.rnd_dm_area thead,
+.rnd_cl_area thead,
+.rnd_ko_area thead {
+    background-color: var(--green-dark);
+}
+.rnd_dm_area thead th,
+.rnd_cl_area thead th,
+.rnd_ko_area thead th {
+    color: var(--bg-subtle);
+    font-weight: 100;
+}
+.rnd_dm_area thead th:nth-of-type(1),
+.rnd_cl_area thead th:nth-of-type(1) {
+    border-radius: 8px 0 0 0;
+}
+.rnd_dm_area thead th:nth-of-type(16) {
+    border-radius: 0 8px 0 0;
+}
+.rnd_cl_area thead th:nth-of-type(2) {
+    border-radius: 0 8px 0 0;
+}
+.rnd_dm_area tbody,
+.rnd_cl_area tbody,
+.rnd_ko_area tbody {
+    text-align: center;
+    background-color: var(--bg-canvas);
+    font-size: 0.8rem;
+    font-weight: 100;
+}
+.rnd_dm_area tbody td:nth-of-type(1),
+.rnd_ko_area tbody td:nth-of-type(1) {
+    border-radius: 0 0 0 8px;
+}
+.rnd_dm_area tbody td:nth-of-type(16) {
+    border-radius: 0 0 8px 0;
+}
+.rnd_ko_area tbody td:nth-of-type(1) {
+    width: 10%;
+}
+.rnd_ko_area tbody td:nth-of-type(2) {
+    width: 40%;
+}
+.rnd_ko_area tbody td:nth-of-type(3) {
+    border-radius: 0 0 8px 0;
+}
+
+/*
+    周囲値エリア
+*/
+.amb_val_area {
+    width: 100%;
+    margin: 0 0 16px 0;
+    table-layout: fixed;
+    border-collapse: collapse; 
+    border-radius: 8px;
+    border-color: var(--bg-subtle);
+    background: var(--sky-white, var(--bg-canvas));
+    box-shadow: 0px 1px 8px 2px rgba(20, 20, 20, 0.08), 0px 0px 1px 0px rgba(20, 20, 20, 0.08);
+}
+.amb_val_area thead {
+    background-color: var(--green-dark);
+}
+.amb_val_area thead th {
+    color: var(--bg-subtle);
+    font-weight: 100;
+}
+.amb_val_area thead th:nth-of-type(1) {
+    border-radius: 8px 0 0 0;
+}
+.amb_val_area thead th:nth-of-type(2) {
+    border-radius: 0 8px 0 0;
+}
+.amb_val_area tbody {
+    text-align: center;
+    background-color: var(--bg-canvas);
+    font-size: 0.8rem;
+    font-weight: 100;
+}
+.amb_val_area tbody tr:nth-child(5) td:nth-of-type(1) {
+    border-radius: 0 0 0 8px;
+}
+.amb_val_area tbody tr:nth-child(5) td:nth-of-type(2) {
+    border-radius: 0 0 8px 0;
+}
+
+/*
+    計算履歴エリア
+*/
+.col_his_area {
+    width: 100%;
+    margin: 0 0 16px 0;
+    border-collapse: collapse; 
+    border-radius: 8px;
+    border-color: var(--bg-subtle);
+    background: var(--sky-white, var(--bg-canvas));
+    box-shadow: 0px 1px 8px 2px rgba(20, 20, 20, 0.08), 0px 0px 1px 0px rgba(20, 20, 20, 0.08);
+}
+.col_his_area thead {
+    background-color: var(--green-dark);
+}
+.col_his_area thead th {
+    color: var(--bg-subtle);
+    font-weight: 100;
+}
+.col_his_area thead th:nth-of-type(1) {
+    border-radius: 8px 8px 0 0;
+}
+.col_his_area tbody {
+    text-align: center;
+    background-color: var(--bg-canvas);
+    font-size: 0.8rem;
+    font-weight: 100;
+}
+.col_his_area tbody td:nth-of-type(1), 
+.col_his_area tbody td:nth-of-type(2),
+.col_his_area tbody td:nth-of-type(3),
+.col_his_area tbody td:nth-of-type(4),
+.col_his_area tbody td:nth-of-type(5) {
+    width: 8%;
+}
+.col_his_area tbody td:nth-of-type(7) {
+    width: 20%;
+}
+.col_his_area tbody tr:nth-child(10) td:nth-of-type(1) {
+    border-radius: 0 0 0 8px;
+}
+.col_his_area tbody tr:nth-child(10) td:nth-of-type(7) {
+    border-radius: 0 0 8px 0;
+}
+
+/*
+    加算エリア
+*/
+.add_btn_area {
+    width: 100%;
+    margin: 0 0 16px 0;
+    table-layout: fixed;
+}
+.add_dm_area {
+    width: 100%;
+    margin: 0 0 16px 0;
+    border-collapse: collapse; 
+    border-radius: 8px;
+    border-color: var(--bg-subtle);
+    background: var(--sky-white, var(--bg-canvas));
+    box-shadow: 0px 1px 8px 2px rgba(20, 20, 20, 0.08), 0px 0px 1px 0px rgba(20, 20, 20, 0.08);
+}
+.add_dm_area thead {
+    background-color: var(--green-dark);
+}
+.add_dm_area thead th {
+    color: var(--bg-subtle);
+    font-weight: 100;
+}
+.add_dm_area thead th:nth-of-type(1) {
+    border-radius: 8px 8px 0 0;
+}
+.add_dm_area tbody {
+    text-align: center;
+    background-color: var(--bg-canvas);
+    font-size: 0.8rem;
+    font-weight: 100;
+}
+.add_dm_area tbody td:nth-of-type(1) {
+    width: 5%;
+    font-size: 0.6rem;
+    border-radius: 0 0 0 8px;
+}
+.add_dm_area tbody td:nth-of-type(3),
+.add_dm_area tbody td:nth-of-type(5),
+.add_dm_area tbody td:nth-of-type(7) {
+    width: 5%;
+    font-size: 0.6rem;
+}
+.add_dm_area tbody td:nth-of-type(2),
+.add_dm_area tbody td:nth-of-type(4),
+.add_dm_area tbody td:nth-of-type(6) {
+    width: 20%;
+}
+.add_dm_area tbody td:nth-of-type(8) {
+    width: 20%;
+    border-radius: 0 0 8px 0;
+}
+.add_area {
+    width: 100%;
+    margin: 0 0 16px 0;
+    table-layout: fixed;
+    border-collapse: collapse; 
+    border-radius: 8px;
+    border-color: var(--bg-subtle);
+    background: var(--sky-white, var(--bg-canvas));
+    box-shadow: 0px 1px 8px 2px rgba(20, 20, 20, 0.08), 0px 0px 1px 0px rgba(20, 20, 20, 0.08);
+}
+.add_area thead {
+    background-color: var(--green-dark);
+}
+.add_area thead th {
+    color: var(--bg-subtle);
+    font-weight: 100;
+}
+.add_area thead th:nth-of-type(1) {
+    border-radius: 8px 8px 0 0;
+}
+.add_area tbody {
+    text-align: left;
+    background-color: var(--bg-canvas);
+    font-size: 0.7rem;
+    font-weight: 100;
+}
+.add_area tbody td:nth-of-type(1) {
+    border-radius: 0 0 0 8px;
+}
+.add_area tbody td:nth-of-type(3) {
+    border-radius: 0 0 8px 0;
+}

@@ -1,0 +1,38 @@
+@media screen and (min-width: 481px) {
+    .footer_tab {
+        display: none;
+    }
+    .scr_iso_list {
+        margin: 48px 8px 48px 8px;
+    }
+
+
+    .scr_iso_left {
+        display: none;
+    }
+    .scr_iso_center {
+        width: 48%; 
+    }
+    .scr_iso_right {
+        width: 48%; 
+    }
+    .exe_area_1 {
+        width: 55%; 
+    }
+    .exe_area_2 {
+        width: 15%; 
+        text-align: right;
+    }
+}
+@media screen and (min-width: 1201px) {
+    .scr_iso_left {
+        display: block;
+    }
+    .scr_iso_center {
+        width: 33%; 
+    }
+    .scr_iso_right {
+        width: 33%; 
+    }
+    
+}

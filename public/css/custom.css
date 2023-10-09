@@ -1,4 +1,10 @@
 /* Put your custom CSS rules here */
+
+
+input{
+    font-size:16px;
+}
+
 table {
     text-indent: initial;
     white-space-collapse: collapse;
@@ -12,12 +18,28 @@ table {
     text-align: center;
     empty-cells: show;
     margin: 0.4em auto 0.4em auto;
-    font-size: 0.8em; 
 }
 
-table.dst_result {
+details.add {
+    border-left: 1px solid var(--dark);
+    border-right: 1px solid var(--dark);
+    border-bottom: 1px solid var(--dark);
+    background-color: var(--lesslight);
     width: 456px;
-    table-layout: fixed;
+}
+
+details.add table {
+    border-left: 0px solid var(--dark);
+    background-color: var(--light);
+    width: 455px;
+}
+
+details.add td.end {
+    border-bottom: 0px solid var(--dark);
+}
+
+details.add td.last {
+    border-right: 1px solid var(--dark);
 }
 
 th {
@@ -33,4 +55,282 @@ td {
     border-bottom: 1px solid var(--dark);
     text-align: center;
     padding: 0.2em;
+}
+
+table.hst_result td.hst_st {
+    width: 40px;
+}
+table.hst_result td.hst_dm {
+    width: 80px;
+}
+
+div.cor_tbl_l_h {
+    margin-right: 0px;
+    padding: 0px;
+    border-left: 1px solid var(--dark);
+    border-bottom: 1px solid var(--dark);
+    background-color: var(--lesslight);
+    text-align: left;
+}
+
+div.cor_tbl_l_b {
+    margin-right: 0px;
+    padding: 0px;
+    border-left: 1px solid var(--dark);
+    text-align: left;
+}
+
+
+div.cor_tbl_c_i {
+    margin-right: 0px;
+    padding: 0px;
+    border-bottom: 1px solid var(--dark);
+    text-align: right;
+}
+
+div.cor_tbl_c_h {
+    margin-right: 0px;
+    padding: 0px;
+    border-bottom: 1px solid var(--dark);
+    background-color: var(--lesslight);
+    text-align: left;
+}
+
+div.cor_tbl_c_b {
+    margin-right: 0px;
+    padding: 0px;
+    text-align: left;
+}
+
+
+div.cor_tbl_l_i {
+    margin-right: 0px;
+    padding: 0px;
+    border-left: 1px solid var(--dark);
+    border-bottom: 1px solid var(--dark);
+    text-align: right;
+}
+
+div.cor_tbl_r_h {
+    margin-right: 0px;
+    padding: 0px;
+    border-right: 1px solid var(--dark);
+    border-bottom: 1px solid var(--dark);
+    background-color: var(--lesslight);
+    text-align: left;
+}
+
+div.cor_tbl_r_b {
+    margin-right: 0px;
+    padding: 0px;
+    border-right: 1px solid var(--dark);
+    text-align: left;
+}
+
+
+div.cor_tbl_r_i {
+    margin-right: 0px;
+    padding: 0px;
+    border-right: 1px solid var(--dark);
+    border-bottom: 1px solid var(--dark);
+    text-align: right;
+}
+
+
+.exp_h2 {
+    font-weight: bold;
+    border-bottom: 2px solid #4c9ac0;
+    padding: 0.3em;
+    margin-bottom: 0.3em;
+    color: #ddd;
+}
+.exp_h3 {
+    font-weight: bold;
+    padding: 0 3em;
+    width: fit-content;
+    margin: 0.4em 0 0.2em 0.4em;
+    text-align: left;
+    position: relative;
+    color: #ddd;
+}
+.exp_h3::before, .exp_h3::after {
+  content: '';
+  background: #4c9ac0;
+  width: 2em;
+  height: 3px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+.exp_h3::before {
+  left: 0;
+}
+.exp_h3::after {
+  right: 0;
+}
+
+.open {
+	cursor:pointer;
+    /* margin: 0.2em 0.2em; */
+    padding: 0.4em 0 0em 0;
+    /* ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl; */
+    text-align: center;
+    display: block;
+    border: 1px solid var(--dark);
+    border-radius: 5px;
+    font-weight: bold;
+}
+#pop-up {
+	display: none;
+}
+.overlay {
+	display: none;
+}
+#pop-up:checked + .overlay {
+	display: block;
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	background: rgba(0, 0, 0, 0.75);
+}
+.window {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 90vw;
+	max-width: 600px;
+    padding: 20px;
+	height: 800px;
+	/* background-color: #fff; */
+    color: #ddd;
+	border-radius: 4px;
+	align-items: center;
+	transform: translate(-50%, -50%);
+    overflow-y: scroll;
+
+}
+.close {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+    font-size: 1.5em;
+    font-weight: bold;
+	cursor:pointer;
+    color: #ddd;
+}
+
+.hst_h {
+    border-right: 1px solid var(--dark); 
+    border-top: 1px solid var(--dark); 
+    border-left: 1px solid var(--dark); 
+    text-align: center; 
+    background-color: var(--lesslight); 
+}
+
+.hst_b {
+    margin-right: 0px;
+    padding-top: 4px;
+    text-align: left;
+}
+
+.hst_b_h {
+    padding-left: 4px; 
+    text-align: center;
+}
+
+@media screen and (max-width:599px) {
+    
+    .row {
+        display: flex;
+        flex-direction: row;
+        gap: 0px 0px;
+        padding: 0;
+        width: 100%;
+    }
+
+    /* Make everything in a row a column */
+    .row > * {
+        display: block;
+        flex: 1 1 auto;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .row > *:not(:last-child) {
+        margin-right: 10px;
+    }
+    .hdn {
+        display: none;
+    }
+    .cng {
+        position: fixed;
+        bottom: 10px; 
+        right: 10px;
+        padding: 0px 0px;
+        width: 100px;
+        height: 50px;
+        font-weight: bold;
+        font-size: 16px;
+        display: block;
+    }
+    .smp_top {
+        padding-top: 0px;
+    }
+    .smp_1b {
+        width: auto;
+    }
+    .smp_dm1 {
+        width: 110%;
+    }
+    .smp_dm2 {
+        width: 110%;
+    }
+    .smp_dm3 {
+        width: 110%;
+    }
+
+    table.dst_result {
+        table-layout: fixed;
+    }
+
+    .hst_b_item {
+        font-size: 0.8em;
+    }
+    .hst_1_1 {
+        float:left;
+        width: 368px;
+        line-height: 1.2em;
+        margin-left: 0;
+        text-align: left;
+        border-right: 1px solid var(--dark); 
+        border-left: 1px solid var(--dark); 
+        font-size: 0.8em;
+    }
+
+    .atk_txt {
+        width:auto; 
+        text-align:center;
+        font-size: 0.7em;
+    }
+}
+
+[role="tab"] {
+  color: #111;
+  &[aria-selected="true"] {
+    color: red;
+  }
+}
+
+[role="tabpanel"] {
+  display: none;
+
+  &[aria-hidden="false"] {
+    display: block;
+  }
 }

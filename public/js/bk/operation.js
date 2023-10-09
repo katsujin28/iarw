@@ -1,7 +1,7 @@
 
 // テスト用
 shortcut.add("F11", function() {
-    document.getElementById("Attack").ariaSelected = true;
+    alert(term_id);
 });
 
 // エンター推移
@@ -133,12 +133,11 @@ function redioChnange( rdb ) {
 
     for (let i = 0; i < len; i++){
         if (elements.item(i).checked){
-            hst_val = String(Number(elements.item(i).value) + 1);
-            if (hst_val == String(len)) hst_val = '0';
+            hst_val = i == (len - 1) ? 0 : i + 1;
         }
     }
-    
-    document.getElementById(rdb + '_' + hst_val).checked = true;
+
+    elements.item(hst_val).checked = true;
 
     cngColor(rdb, hst_val);
 }
@@ -211,6 +210,19 @@ shortcut.add("F9", function() { redioChnange('Underground'); });
 function cngColor( cngid, cngnm ) {
     // №を文字列変換
     cngnm = String(cngnm);
+    // その他情報の初期化
+    var i = 1;
+    do {
+        document.getElementById(cngid + '_' + i + '_b').style.backgroundColor = '';
+        document.getElementById(cngid + '_' + i + '_i').style.backgroundColor = '';
+        i = i + 1;
+    } while (document.getElementById(cngid + '_' + i + '_b') != null);
+
+    // 指定箇所の強調表示
+    if (cngnm != '0') {
+        document.getElementById(cngid + '_' + cngnm + '_b').style.backgroundColor = sel_bk_col;
+        document.getElementById(cngid + '_' + cngnm + '_i').style.backgroundColor = sel_bk_col;
+    }
 
     // 補正表示テーブル更新
     var corList = document.getElementById('corList');
@@ -218,47 +230,47 @@ function cngColor( cngid, cngnm ) {
         case 'AttackAbillity': {
             switch (cngnm) {
                 case '0': {
-                    corList.rows[0].cells[0].innerText = nhsp;
+                    corList.rows[1].cells[0].innerText = nhsp;
                     break;
                 }
                 case '1': {
-                    corList.rows[0].cells[0].innerText = '威*1.1';
+                    corList.rows[1].cells[0].innerText = '威*1.1';
                     break;
                 }
                 case '2': {
-                    corList.rows[0].cells[0].innerText = '威*1.2';
+                    corList.rows[1].cells[0].innerText = '威*1.2';
                     break;
                 }
                 case '3': {
-                    corList.rows[0].cells[0].innerText = '威*1.3';
+                    corList.rows[1].cells[0].innerText = '威*1.3';
                     break;
                 }
                 case '4': {
-                    corList.rows[0].cells[0].innerText = '威*1.5';
+                    corList.rows[1].cells[0].innerText = '威*1.5';
                     break;
                 }
                 case '5': {
-                    corList.rows[0].cells[0].innerText = '攻*1.3';
+                    corList.rows[1].cells[0].innerText = '攻*1.3';
                     break;
                 }
                 case '6': {
-                    corList.rows[0].cells[0].innerText = '攻*1.5';
+                    corList.rows[1].cells[0].innerText = '攻*1.5';
                     break;
                 }
                 case '7': {
-                    corList.rows[0].cells[0].innerText = '攻*2';
+                    corList.rows[1].cells[0].innerText = '攻*2';
                     break;
                 }
                 case '8': {
-                    corList.rows[0].cells[0].innerText = '防*0.75';
+                    corList.rows[1].cells[0].innerText = '防*0.75';
                     break;
                 }
                 case '9': {
-                    corList.rows[0].cells[0].innerText = 'D*1.5';
+                    corList.rows[1].cells[0].innerText = 'D*1.5';
                     break;
                 }
                 case '10': {
-                    corList.rows[0].cells[0].innerText = 'D*2';
+                    corList.rows[1].cells[0].innerText = 'D*2';
                     break;
                 }
             }
@@ -267,39 +279,39 @@ function cngColor( cngid, cngnm ) {
         case 'AttackItem': {
             switch (cngnm) {
                 case '0': {
-                    corList.rows[0].cells[1].innerText = nhsp;
+                    corList.rows[1].cells[1].innerText = nhsp;
                     break;
                 }
                 case '1': {
-                    corList.rows[0].cells[1].innerText = '威*1.09';
+                    corList.rows[1].cells[1].innerText = '威*1.09';
                     break;
                 }
                 case '2': {
-                    corList.rows[0].cells[1].innerText = '威*1.1';
+                    corList.rows[1].cells[1].innerText = '威*1.1';
                     break;
                 }
                 case '3': {
-                    corList.rows[0].cells[1].innerText = '威*1.2';
+                    corList.rows[1].cells[1].innerText = '威*1.2';
                     break;
                 }
                 case '4': {
-                    corList.rows[0].cells[1].innerText = '威*1.3';
+                    corList.rows[1].cells[1].innerText = '威*1.3';
                     break;
                 }
                 case '5': {
-                    corList.rows[0].cells[1].innerText = '攻*1.5';
+                    corList.rows[1].cells[1].innerText = '攻*1.5';
                     break;
                 }
                 case '6': {
-                    corList.rows[0].cells[1].innerText = '攻*2';
+                    corList.rows[1].cells[1].innerText = '攻*2';
                     break;
                 }
                 case '7': {
-                    corList.rows[0].cells[1].innerText = 'D*1.2';
+                    corList.rows[1].cells[1].innerText = 'D*1.2';
                     break;
                 }
                 case '8': {
-                    corList.rows[0].cells[1].innerText = 'D*1.3';
+                    corList.rows[1].cells[1].innerText = 'D*1.3';
                     break;
                 }
             }
@@ -308,39 +320,39 @@ function cngColor( cngid, cngnm ) {
         case 'DefenseAbillity': {
             switch (cngnm) {
                 case '0': {
-                    corList.rows[0].cells[2].innerText = nhsp;
+                    corList.rows[1].cells[2].innerText = nhsp;
                     break;
                 }
                 case '1': {
-                    corList.rows[0].cells[2].innerText = '威*1.25';
+                    corList.rows[1].cells[2].innerText = '威*1.25';
                     break;
                 }
                 case '2': {
-                    corList.rows[0].cells[2].innerText = '攻*0.5';
+                    corList.rows[1].cells[2].innerText = '攻*0.5';
                     break;
                 }
                 case '3': {
-                    corList.rows[0].cells[2].innerText = '攻*0.75';
+                    corList.rows[1].cells[2].innerText = '攻*0.75';
                     break;
                 }
                 case '4': {
-                    corList.rows[0].cells[2].innerText = '防*1.3';
+                    corList.rows[1].cells[2].innerText = '防*1.3';
                     break;
                 }
                 case '5': {
-                    corList.rows[0].cells[2].innerText = '防*1.5';
+                    corList.rows[1].cells[2].innerText = '防*1.5';
                     break;
                 }
                 case '6': {
-                    corList.rows[0].cells[2].innerText = 'D*2';
+                    corList.rows[1].cells[2].innerText = 'D*2';
                     break;
                 }
                 case '7': {
-                    corList.rows[0].cells[2].innerText = 'D*0.5';
+                    corList.rows[1].cells[2].innerText = 'D*0.5';
                     break;
                 }
                 case '8': {
-                    corList.rows[0].cells[2].innerText = 'D*0.75';
+                    corList.rows[1].cells[2].innerText = 'D*0.75';
                     break;
                 }
             }
@@ -349,19 +361,19 @@ function cngColor( cngid, cngnm ) {
         case 'DefenseItem': {
             switch (cngnm) {
                 case '0': {
-                    corList.rows[0].cells[3].innerText = nhsp;
+                    corList.rows[1].cells[3].innerText = nhsp;
                     break;
                 }
                 case '1': {
-                    corList.rows[0].cells[3].innerText = '防*1.5';
+                    corList.rows[1].cells[3].innerText = '防*1.5';
                     break;
                 }
                 case '2': {
-                    corList.rows[0].cells[3].innerText = '防*2';
+                    corList.rows[1].cells[3].innerText = '防*2';
                     break;
                 }
                 case '3': {
-                    corList.rows[0].cells[3].innerText = 'D*0.5';
+                    corList.rows[1].cells[3].innerText = 'D*0.5';
                     break;
                 }
             }
@@ -389,5 +401,5 @@ function cngColor( cngid, cngnm ) {
     if (oth_f7 == '1') ot_txt = ot_txt != '' ? ot_txt + ' , 急所' : '急所';
     if (oth_f8 == '1') ot_txt = ot_txt != '' ? ot_txt + ' , 技威力+' : '技威力+';
     if (oth_f9 == '1') ot_txt = ot_txt != '' ? ot_txt + ' , 特殊被弾' : '特殊被弾';
-    corList.rows[0].cells[4].innerText = ot_txt;
+    corList.rows[1].cells[4].innerText = ot_txt;
 }

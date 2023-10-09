@@ -6,8 +6,8 @@
     --moredark: #000;
     border-top: 5px solid var(--dark);
     line-height: 1.5em; /* This causes wrapping h1's to collapse too small */
-    font-family: sans-serif;
-    font-size: 14px;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 12px;
 }
 
 * {
@@ -17,6 +17,7 @@
 
 button, input {
     font-size: 1em; /* Override browser default font shrinking*/
+    font-family: 'M PLUS 1p', sans-serif;
 }
 
 input {
@@ -40,10 +41,11 @@ code {
 body {
     background-color: var(--light);
     margin: 0;
-    max-width: 1000px;
+    max-width: 1200px;
     padding: 0 20px 20px 20px;
     margin-left: auto;
     margin-right: auto;
+    touch-action: pan-x pan-y;
 }
 
 img {
@@ -119,6 +121,66 @@ button + button, .button + .button, input[type=submit] + input[type=submit] {
     .row > *:not(:last-child) {
         margin-right: 10px;
     }
+    
+    .hdn {
+        width: 100%;
+        display: block;
+    }
+    .cng {
+        display: none;
+    }
+    .smp_top {
+        padding-top: 10px;
+    }
+    .smp_1b {
+        width: 368px;
+    }
+    .smp_dm1 {
+        width: 48px;
+    }
+    .smp_dm2 {
+        width: 36px;
+    }
+    .smp_dm3 {
+        width: 24px;
+    }
+
+    table.dst_result {
+        width: 456px;
+        table-layout: fixed;
+    }
+    table.hst_result {
+        width: 456px;
+    }
+
+    .hst_b_item {
+        font-size: 0.9em;
+    }
+    .hst_1_1 {
+        float:left;
+        width: 368px;
+        line-height: 1.2em;
+        margin-left: 0;
+        text-align: left;
+        border-right: 1px solid var(--dark); 
+        border-left: 1px solid var(--dark); 
+        font-size: 0.9em;
+    }
+
+    .atk_txt {
+        width:auto; 
+        text-align:center;
+        font-size: 0.9em;
+    }
+}
+.smp_dm1::-webkit-inner-spin-button,
+.smp_dm1::-webkit-outer-spin-button,
+.smp_dm2::-webkit-inner-spin-button,
+.smp_dm2::-webkit-outer-spin-button,
+.smp_dm3::-webkit-inner-spin-button,
+.smp_dm3::-webkit-outer-spin-button {
+    -webkit-appearance: none; 
+    margin: 0; 
 }
 
 /* Dark mode overrides (confusingly inverse) */
